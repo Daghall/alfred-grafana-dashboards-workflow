@@ -4,7 +4,7 @@ WORKSPACE := ./tmp
 .PHONY: build
 build: clean
 	@mkdir -p $(WORKSPACE)
-	@zip $(WORKSPACE)/$(PROJECT_NAME).alfredworkflow info.plist bin/dashboards
+	@zip $(WORKSPACE)/$(PROJECT_NAME).alfredworkflow info.plist icon.png bin/dashboards
 
 .PHONY:  clean
 clean:
