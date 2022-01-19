@@ -17,3 +17,7 @@ Create a file named `~/.alfred-grafana-dashboards` with the following format and
 ```
 GRAFANA_HOST=https://example.com
 ```
+
+## Features
+
+Type `logs` to open the `/explore` route instead of a dashboard.

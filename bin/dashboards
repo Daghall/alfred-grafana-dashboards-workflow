@@ -18,6 +18,12 @@ else
   abort "ERROR: server responded with: #{response.code}"
 end
 
+# Add logging route
+explore = {}
+explore['title'] = "Logs"
+explore['custom-uri'] = "explore"
+data.push(explore)
+
 sorted_data = data.sort { |a, b| a['title'] <=> b['title'] }
 if search_term.nil?
   filtered_data = sorted_data
@@ -33,11 +39,11 @@ end
 puts '<?xml version="1.0"?>'
 puts '<items>'
 filtered_data.each do |dashboard|
-puts <<-EOS
-  <item arg="#{grafana_host}/dashboard/#{dashboard['uri']}" autocomplete="#{dashboard['title']}">
-    <title>#{dashboard['title']}</title>
-    <subtitle>Open the "#{dashboard['title']}" dashboard in Grafana...</subtitle>
-  </item>
-EOS
+  uri = dashboard['custom-uri'] ? dashboard['custom-uri'] : "dashboard/#{dashboard['uri']}"
+  puts <<-EOS
+    <item arg="#{grafana_host}/#{uri}" autocomplete="#{dashboard['title']}">
+      <title>#{dashboard['title']}</title>
+    </item>
+  EOS
 end
 puts '</items>'
