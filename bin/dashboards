@@ -20,7 +20,7 @@ end
 
 # Add logging route
 explore = {}
-explore['title'] = "Logs"
+explore['title'] = "explore (Loki)"
 explore['custom-uri'] = "explore"
 data.push(explore)
 

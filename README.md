@@ -20,4 +20,4 @@ GRAFANA_HOST=https://example.com
 
 ## Features
 
-Type `logs` to open the `/explore` route instead of a dashboard.
+Type `explore` to open the `/explore` route instead of a dashboard.
