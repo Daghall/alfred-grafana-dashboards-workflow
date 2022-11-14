@@ -39,7 +39,7 @@ end
 puts '<?xml version="1.0"?>'
 puts '<items>'
 filtered_data.each do |dashboard|
-  uri = dashboard['custom-uri'] ? dashboard['custom-uri'] : "dashboard/#{dashboard['uri']}"
+  uri = dashboard['custom-uri'] ? dashboard['custom-uri'] : "#{dashboard['url']}"
   puts <<-EOS
     <item arg="#{grafana_host}/#{uri}" autocomplete="#{dashboard['title']}">
       <title>#{dashboard['title']}</title>
