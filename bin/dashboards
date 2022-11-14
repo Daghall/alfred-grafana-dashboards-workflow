@@ -21,7 +21,7 @@ end
 # Add logging route
 explore = {}
 explore['title'] = "explore (Loki)"
-explore['custom-uri'] = "explore"
+explore['custom-uri'] = "/explore"
 data.push(explore)
 
 sorted_data = data.sort { |a, b| a['title'] <=> b['title'] }
@@ -40,8 +40,9 @@ puts '<?xml version="1.0"?>'
 puts '<items>'
 filtered_data.each do |dashboard|
   uri = dashboard['custom-uri'] ? dashboard['custom-uri'] : "#{dashboard['url']}"
+  autocomplete = dashboard['title'].gsub(/[^ -~åäö]/i, '')
   puts <<-EOS
-    <item arg="#{grafana_host}/#{uri}" autocomplete="#{dashboard['title']}">
+    <item arg="#{grafana_host}#{uri}" autocomplete="#{autocomplete}">
       <title>#{dashboard['title']}</title>
     </item>
   EOS
